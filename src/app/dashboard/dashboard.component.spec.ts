@@ -22,17 +22,7 @@ describe('DashboardComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it(`Should have 'dashboard works! in a paragraph`, () => {
-    const fixture = TestBed.createComponent(DashboardComponent);
-    fixture.detectChanges();
-    const app = fixture.componentInstance;
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('p')?.textContent).toContain(
-      'dashboard works!'
-    );
-  });
-
-  it(`Should have 3 tile rendered if isAdmin is true`, () => {
+  it(`Should have 3 tiles rendered if isAdmin is true`, () => {
     const fixture = TestBed.createComponent(DashboardComponent);
 
     const app = fixture.componentInstance;
@@ -40,10 +30,10 @@ describe('DashboardComponent', () => {
 
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelectorAll('.tile')?.length).toBe(3);
+    expect(compiled.querySelectorAll('app-tile')?.length).toBe(3);
   });
 
-  it(`Should have 2 tile rendered if isAdmin is false`, () => {
+  it(`Should have 2 tiles rendered if isAdmin is false`, () => {
     const fixture = TestBed.createComponent(DashboardComponent);
 
     const app = fixture.componentInstance;
@@ -51,6 +41,6 @@ describe('DashboardComponent', () => {
 
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelectorAll('.tile')?.length).toBe(2);
+    expect(compiled.querySelectorAll('app-tile')?.length).toBe(2);
   });
 });
