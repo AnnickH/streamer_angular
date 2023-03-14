@@ -35,12 +35,8 @@ export class StudentService {
 
   public remove(student: StudentModel): void {}
 
-  public findSimpleStudents(
-    id: number,
-    lastName: string,
-    firstName: string,
-    email: string
-  ) {
-    return this._httpClient.get<IStudent[]>(this.endpoint);
+  public findSimpleStudents() {
+    return this._httpClient.get<IStudent[]>(this.endpoint + '/simple');
+    // endpoint:http://127.0.0.1:5000/v1/students + /simple qui renvoie à StudentController  @GetMapping("simple") du back
   }
 }

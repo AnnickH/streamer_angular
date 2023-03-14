@@ -20,13 +20,14 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this._studentService
-      .findAll() // a changer par une méthode pour réccupérer que les données que l'on à besoin, dans le backend studentController
+      .findSimpleStudents() // findAll -> charge toute les données, findSimpleEtudiant refère a la fonction défini en back, et prend que ce qu'on a besoin
       .pipe(
         take(1) //observe quand la donnée est disponible return que la list des students et retourne là
       )
       .subscribe((students: IStudent[]) => {
         //reccupère les données qui ont déjà été manipulée
         this.students = students;
+        console.log(students);
         // this._cd.detectChanges();
         console.log(`Got ${students.length} students`);
       }); //tuyau responsable d'une tâche
