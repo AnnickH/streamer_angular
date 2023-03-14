@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ListComponent } from './student/list/list.component';
 
 @NgModule({
   imports: [RouterModule.forRoot(AppRoutingModule.routes)],
@@ -16,6 +17,10 @@ export class AppRoutingModule {
     {
       path: 'dashboard',
       component: DashboardComponent,
+    },
+    {
+      path: 'student/list',
+      component: ListComponent,
     },
     {
       path: '**', // n'importe quelle chemin qui n'existe pas dans le routeur, toujours le dernier rencontré

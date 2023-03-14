@@ -1,1 +1,31 @@
-<p>list works!</p>
+<div class="actions">
+  <button type="button" (click)="onClick('')">&#8617; Previous</button>
+</div>
+<div id="asc">
+  ID
+  <button type="button" (click)="sortById('asc')">&#9650;</button>
+
+  Last name
+  <button type="button" (click)="sortByLastName('asc')">&#9650;</button>
+</div>
+<div id="desc">
+  ID
+  <button type="button" (click)="sortById('desc')">&#9660;</button>
+  Last name
+  <button type="button" (click)="sortByLastName('desc')">&#9660;</button>
+</div>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Last Name</th>
+    <th>First Name</th>
+    <th>Email</th>
+  </tr>
+  <tr *ngFor="let student of students">
+    <td>{{ student.id }}</td>
+    <td>{{ student.lastName }}</td>
+    <td>{{ student.firstName }}</td>
+    <td>{{ student.email }}</td>
+  </tr>
+</table>
