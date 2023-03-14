@@ -8,14 +8,18 @@ describe('TileComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TileComponent ]
-    })
-    .compileComponents();
+      declarations: [TileComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TileComponent);
     component = fixture.componentInstance;
+    component.tileInfo = {
+      title: 'Hello world',
+      summary: 'Test',
+      action: ['dashboard'],
+    };
     fixture.detectChanges();
   });
 
