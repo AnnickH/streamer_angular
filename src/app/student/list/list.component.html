@@ -1,6 +1,14 @@
+<!-- Ici, boutton avec un fonction onClick qui contient un lien pour accéder à dashboard -->
 <div class="actions">
   <button type="button" (click)="onClick('')">&#8617; Previous</button>
 </div>
+<!-- Ici on utilise un routerLink -->
+<div class="row">
+  <div class="col xs12">
+    <a [routerLink]="['/', 'dashboard']">Back</a>
+  </div>
+</div>
+
 <div id="asc">
   ID
   <button type="button" (click)="sortById('asc')">&#9650;</button>

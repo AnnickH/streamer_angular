@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./tile.component.scss'],
 })
 export class TileComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router) {} // contient le service routeur
   @Input() public tileInfo: any;
 
   ngOnInit(): void {}
@@ -15,7 +15,8 @@ export class TileComponent implements OnInit {
   public onClick(object: any): void {
     console.log(`A button was clicked: ${object.title}`);
     if (this.tileInfo.title === 'Students') {
-      this.router.navigate(['/student/list']);
+      //this.router.navigate(['/student/list']); // pour evité de l'écrire en dur on utilise (object.action)
+      this.router.navigate(object.action); // => dashboard component => action: ['/','student','list']
     }
   }
 }

@@ -28,7 +28,6 @@ export class ListComponent implements OnInit {
         //reccupère les données qui ont déjà été manipulée
         this.students = students;
         console.log(students);
-        // this._cd.detectChanges();
         console.log(`Got ${students.length} students`);
       }); //tuyau responsable d'une tâche
   }

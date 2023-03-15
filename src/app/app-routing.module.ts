@@ -5,7 +5,7 @@ import { ListComponent } from './student/list/list.component';
 
 @NgModule({
   imports: [RouterModule.forRoot(AppRoutingModule.routes)],
-  exports: [RouterModule],
+  exports: [RouterModule], // il exporte , c'est grace a cet export que je peux utiliser router service et routeur name
 })
 export class AppRoutingModule {
   public static readonly routes: Routes = [

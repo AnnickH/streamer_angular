@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
       {
         title: 'Students',
         summary: 'Add, remove, view students',
-        action: ['dashboard'],
+        action: ['/', 'student', 'list'], // action: ['dashboard'],
       },
       {
         title: 'Courses',
