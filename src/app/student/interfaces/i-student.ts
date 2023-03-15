@@ -1,4 +1,5 @@
 export interface IStudent {
+  [x: string]: any;
   id?: number;
   lastName: string;
   firstName?: string;
@@ -6,4 +7,5 @@ export interface IStudent {
   phoneNumber?: string;
   login: string;
   password: string;
+  isSelected: boolean;
 }
