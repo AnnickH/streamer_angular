@@ -14,11 +14,11 @@ table {
 
   td {
     padding: 0.5em;
-    border: 1px solid #ddd;
+    border: 1px solid #ddd; //bord du tableau
 
     &:nth-child(even) {
       background-color: #f9f9f9;
-    }
+    } // pour afficher les colonnes et pas la ligne on sort l'élément et on écrit: // tr:nth-child(even) {background-color: #e0acf8;}
   }
 }
 button {
