@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListComponent } from './student/list/list.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
-  imports: [RouterModule.forRoot(AppRoutingModule.routes)],
+  imports: [RouterModule.forRoot(AppRoutingModule.routes), SharedModule],
   exports: [RouterModule], // il exporte , c'est grace a cet export que je peux utiliser router service et routeur name
 })
 export class AppRoutingModule {
@@ -21,6 +22,11 @@ export class AppRoutingModule {
     {
       path: 'student/list',
       component: ListComponent,
+    },
+    {
+      path: 'course',
+      loadChildren: () =>
+        import(`./course/course.module`).then((m) => m.CourseModule),
     },
     {
       path: '**', // n'importe quelle chemin qui n'existe pas dans le routeur, toujours le dernier rencontré

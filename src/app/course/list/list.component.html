@@ -1,0 +1,23 @@
+<div class="first">
+  <span class="list">Course List</span>
+  <span>{{ courses.length }} items</span>
+</div>
+<!-- Ici, boutton avec un fonction onClick qui contient un lien pour accéder à dashboard -->
+<div class="actions">
+  <button type="button" (click)="onClick('')">&#8617; Previous</button>
+</div>
+
+<div id="class" *ngFor="let course of courses">
+  <div id="top" (click)="cli('')">
+    <!-- {{ course.id }} -->
+    <button type="button" (click)="cli('')">&#8617;</button
+    ><span>{{ course.title }}</span>
+    <span>{{ course.modules.length }} items</span>
+    <!-- {{ course.createdAt }} {{ course.updatedAt }} {{ course.objective }} -->
+  </div>
+  <div *ngIf="showModules" id="modules">
+    <div *ngFor="let modules of course.modules">
+      {{ modules.name }}
+    </div>
+  </div>
+</div>
