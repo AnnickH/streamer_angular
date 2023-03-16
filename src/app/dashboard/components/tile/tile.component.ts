@@ -18,5 +18,8 @@ export class TileComponent implements OnInit {
       //this.router.navigate(['/student/list']); // pour evité de l'écrire en dur on utilise (object.action)
       this.router.navigate(object.action); // => dashboard component => action: ['/','student','list']
     }
+    if (this.tileInfo.title === 'Courses') {
+      this.router.navigate(object.action);
+    }
   }
 }
