@@ -21,6 +21,9 @@ table {
     } // pour afficher les colonnes et pas la ligne on sort l'élément et on écrit: // tr:nth-child(even) {background-color: #e0acf8;}
   }
 }
+
 button {
   margin: 0.5em;
 }
+
+// text-transform : uppercase //(pour passer en maj)

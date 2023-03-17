@@ -23,6 +23,7 @@
 </div> -->
 
 <table>
+  <!-- <thead> -->
   <tr>
     <th>
       <input
@@ -42,6 +43,7 @@
         >&#9660;</span
       >
     </th>
+    <th>Initials</th>
     <th
       (click)="byLastname()"
       [ngClass]="{ sorted: sortDefault === 'lastName' }"
@@ -61,6 +63,8 @@
     <th>First Name</th>
     <th>Email</th>
   </tr>
+  <!-- </thead> -->
+  <!-- <tbody *ngIf="students.length"> -->
   <tr *ngFor="let student of students">
     <!-- <td><input type="checkbox" [(ngModel)]="student.isSelected!" (click)="onSelectStudent(student)"]> </td> -->
     <td>
@@ -71,8 +75,11 @@
       />
     </td>
     <td>{{ student.id }}</td>
-    <td>{{ student.lastName }}</td>
+    <td>{{ student | initials : "lastNameFirst" }}</td>
+    <!-- on ajouter | initials pour affichier une colonne en plus pour afficher les initials -->
+    <td>{{ student.lastName | uppercase }}</td>
     <td>{{ student.firstName }}</td>
     <td>{{ student.email }}</td>
   </tr>
+  <!-- </tbody> -->
 </table>
