@@ -23,3 +23,10 @@ div {
   font-family: Arial, sans-serif;
   // letter-spacing: 0.5px;
 }
+div {
+  &.course-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    letter-spacing: 0.5em;
+  }
+}

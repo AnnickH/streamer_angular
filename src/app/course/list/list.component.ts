@@ -1,4 +1,11 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  EventEmitter,
+  Component,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { take } from 'rxjs';
 import { CourseService } from '../services/course.service';
@@ -7,6 +14,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ModuleType } from '../types/module-type';
 import { title } from 'process';
+import { CourseListType } from '../types/course-list-type';
 
 @Component({
   selector: 'app-list',
@@ -14,14 +22,56 @@ import { title } from 'process';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
+  public courses: Array<CourseListType> = [];
+
+  constructor(private _courseService: CourseService, private router: Router) {}
+
+  ngOnInit(): void {
+    this._courseService
+      .findAll()
+      .pipe(take(1))
+      .subscribe((response: CourseListType[]) => {
+        this.courses = response;
+      });
+  }
+  public onClick(object: any): void {
+    // if (object.title)
+    console.log(`previous`);
+    this.router.navigate(['/dashboard']);
+  }
+
+  onCourseToggle(course: CourseListType): void {
+    console.log(
+      `Course was toggled ${
+        course.isSelected ? 'close all but me' : 'close me'
+      }`
+    );
+    if (course.isSelected) {
+      this.courses
+        .filter((inCourse: CourseListType) => inCourse.isSelected)
+        .forEach((inCourse: CourseListType) => {
+          if (course.id !== inCourse.id) {
+            inCourse.isSelected = false;
+          }
+        });
+    }
+  }
+}
+
+// Fait pour le TP en haut correction avec les différents lien de différents fichiers.
+
+/* export class ListComponent implements OnInit {
+  @Output() public onToggleCourse: EventEmitter<CourseListType> =
+    new EventEmitter();
   @Input() public tileInfo: any;
   constructor(
     private _courseService: CourseService,
     private router: Router, //injection de studentService
     private _cd: ChangeDetectorRef
   ) {}
-  courses: CourseType[] = [];
-  hiddenSection: CourseType | null = null;
+  public courses: Array<CourseType> = [];
+  public course: Array<CourseListType> = [];
+
   modules: ModuleType[] = [];
 
   ngOnInit(): void {
@@ -38,7 +88,7 @@ export class ListComponent implements OnInit {
     console.log('c');
   }
 
-  public onClick(object: any): void {
+public onClick(object: any): void {
     // if (object.title)
     console.log(`previous`);
     this.router.navigate(['/dashboard']);
@@ -53,5 +103,27 @@ export class ListComponent implements OnInit {
       this.showModules = true;
     }
   }
+  public revealOrHide(course: CourseListType) {
+    // a mettre dans le cours-tile.components.ts
+    course.isSelected = !course.isSelected;
+    console.log(`Course was toggled : ${course.isSelected}`);
+    this.onToggleCourse.emit(course);
+  }
+  onCourseToggle(course: CourseListType): void {
+    console.log(
+      `Course was toggled ${
+        course.isSelected ? 'close all but me' : 'close me'
+      }`
+    );
+    if (course.isSelected) {
+      this.course
+        .filter((inCourse: CourseListType) => inCourse.isSelected)
+        .forEach((inCourse: CourseListType) => {
+          if (course.id !== inCourse.id) {
+            inCourse.isSelected = false;
+          }
+        });
+    }
+  }
   public showModules: boolean = false;
-}
+} */

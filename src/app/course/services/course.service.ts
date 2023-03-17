@@ -8,6 +8,7 @@ import { CourseType } from '../types/course-type';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 import { environment } from './../../../environments/environment';
+import { CourseListType } from '../types/course-list-type';
 
 @Injectable({
   providedIn: 'root',
@@ -22,24 +23,7 @@ export class CourseService {
    * Send a GET request to http://127.0.0.1:5000/v1/students
    * @returns Observable<IStudent>
    */
-  public findAll(): Observable<CourseType[]> {
-    return this._httpClient.get<CourseType[]>(this.endpoint);
-  }
-
-  public findOne(id: number): void {}
-
-  public findByEmail(email: string): void {}
-
-  public findByLoginOrEmail(email: string, login: string): void {}
-
-  public add(courses: CourseType): void {}
-
-  public update(courses: CourseModel): void {}
-
-  public remove(courses: CourseModel): void {}
-
-  public findSimpleCourse() {
-    return this._httpClient.get<IStudent[]>(this.endpoint + '/simple');
-    // endpoint:http://127.0.0.1:5000/v1/students + /simple qui renvoie à StudentController  @GetMapping("simple") du back
+  public findAll(): Observable<CourseListType[]> {
+    return this._httpClient.get<CourseListType[]>(this.endpoint);
   }
 }

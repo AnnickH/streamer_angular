@@ -1,0 +1,75 @@
+.course {
+  padding-bottom: 0.5em;
+  padding-top: 1em;
+  border-bottom: solid 1px rgba(128, 128, 128, 0.9);
+
+  .icon-list {
+    display: inline-block;
+    &.up {
+      animation-name: up;
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards;
+      animation-iteration-count: 1;
+      animation-timing-function: ease-out;
+    }
+
+    &.down {
+      animation-name: down;
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards;
+      animation-iteration-count: 1;
+      animation-timing-function: ease-out;
+    }
+  }
+
+  app-module-list {
+    display: none;
+    &.is-visible {
+      display: block;
+      animation-name: show;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-iteration-count: 1;
+      animation-timing-function: ease-out;
+    }
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes up {
+  0% {
+    display: inline-block;
+  }
+
+  50% {
+    transform: rotate(-45deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes down {
+  0% {
+  }
+  50% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}

@@ -1,23 +1,41 @@
-<div class="first">
+<!-- Reussir a mettre l'option du click sur ce code -->
+
+<!-- <div class="first">
   <span class="list">Course List</span>
   <span>{{ courses.length }} items</span>
-</div>
+</div> -->
 <!-- Ici, boutton avec un fonction onClick qui contient un lien pour accéder à dashboard -->
 <div class="actions">
   <button type="button" (click)="onClick('')">&#8617; Previous</button>
 </div>
-
+<!--
 <div id="class" *ngFor="let course of courses">
-  <div id="top" (click)="cli('')">
-    <!-- {{ course.id }} -->
-    <button type="button" (click)="cli('')">&#8617;</button
-    ><span>{{ course.title }}</span>
-    <span>{{ course.modules.length }} items</span>
-    <!-- {{ course.createdAt }} {{ course.updatedAt }} {{ course.objective }} -->
-  </div>
-  <div *ngIf="showModules" id="modules">
+  <div id="top"> -->
+<!-- {{ course.id }} -->
+<!-- <button type="button" (click)="cli('')">&#8617;</button> -->
+<!-- <span (click)="cli(course)">{{ course.title }}</span>
+    <span>{{ course.modules.length }} items</span> -->
+<!-- {{ course.createdAt }} {{ course.updatedAt }} {{ course.objective }} -->
+<!-- </div>
+  <div>
     <div *ngFor="let modules of course.modules">
       {{ modules.name }}
     </div>
   </div>
+</div> -->
+
+<!-- add 2 container -->
+<!-- Display title and number -->
+<div class="row">
+  <div class="col xs11 course-title">Course List</div>
+  <div class="col xs1 course-number">{{ courses.length }} items</div>
 </div>
+
+<ng-container *ngIf="courses.length">
+  <ng-container *ngFor="let course of courses">
+    <app-course-tile
+      [course]="course"
+      (onToggleCourse)="onCourseToggle($event)"
+    ></app-course-tile>
+  </ng-container>
+</ng-container>

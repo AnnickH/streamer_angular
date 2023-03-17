@@ -1,1 +1,28 @@
-<p>course-tile works!</p>
+<!-- <p>course-tile works!</p> -->
+<div class="col xs12 course">
+  <div class="row">
+    <div class="col xs10">
+      {{ course.title }}
+    </div>
+    <div class="col xs1">{{ course.modules.length }} items</div>
+
+    <!-- Icon open / close -->
+
+    <div class="col xs1">
+      <span
+        [ngClass]="{
+          'icon-list': true,
+          up: !course.isSelected,
+          down: course.isSelected
+        }"
+        (click)="revealOrHide(course)"
+        >&gt;</span
+      >
+    </div>
+  </div>
+
+  <app-module-list
+    [ngClass]="{ 'is-visible': course.isSelected }"
+    [modules]="course.modules"
+  ></app-module-list>
+</div>

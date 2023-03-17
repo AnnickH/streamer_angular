@@ -1,9 +1,11 @@
+import { type } from 'os';
 import { ModuleType } from './module-type';
-export interface CourseType {
-  id?: number;
+export type CourseType = {
+  id: number;
   title: string;
   createdAt: string;
-  updatedAt?: string;
-  objective?: string;
-  modules: ModuleType[];
-}
+  updatedAt: string;
+  objective: string;
+  modules: Array<ModuleType>;
+  isSelected: boolean;
+};
