@@ -1,3 +1,15 @@
 h1 {
   color: rgba(127, 127, 200, 0.8);
 }
+// .mat-toolbar {
+//   background-color: rgb(86, 72, 138);
+// }
+.mat-toolbar {
+  background-image: linear-gradient(
+    to right,
+    rgb(13, 5, 43),
+    rgb(61, 47, 110),
+    rgb(106, 92, 156),
+    rgb(195, 186, 228)
+  );
+}
