@@ -75,7 +75,9 @@
       />
     </td>
     <td>{{ student.id }}</td>
-    <td>{{ student | initials : "lastNameFirst" }}</td>
+    <td>
+      <span class="bubble">{{ student | initials : "lastNameFirst" }}</span>
+    </td>
     <!-- on ajouter | initials pour affichier une colonne en plus pour afficher les initials -->
     <td>{{ student.lastName | uppercase }}</td>
     <td>{{ student.firstName }}</td>
