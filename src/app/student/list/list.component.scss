@@ -9,12 +9,14 @@ table {
     font-weight: bold;
     text-align: left;
     padding: 0.5em;
-    border: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
   }
 
   td {
     padding: 0.5em;
-    border: 1px solid #ddd; //bord du tableau
+    border-bottom: 1px solid #ddd; //bord du tableau
+    border-top: 1px solid #ddd;
 
     &:nth-child(even) {
       background-color: #f9f9f9;
