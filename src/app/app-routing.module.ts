@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListComponent } from './student/list/list.component';
 import { SharedModule } from './shared/shared.module';
+import { AddComponent } from './student/add/add.component';
 
 @NgModule({
   imports: [RouterModule.forRoot(AppRoutingModule.routes), SharedModule],
@@ -22,6 +23,10 @@ export class AppRoutingModule {
     {
       path: 'student/list',
       component: ListComponent,
+    },
+    {
+      path: 'student/add',
+      component: AddComponent,
     },
     {
       path: 'course',
