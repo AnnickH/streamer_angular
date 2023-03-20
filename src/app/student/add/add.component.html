@@ -67,31 +67,22 @@
       <fieldset>
         <legend>Student credentials</legend>
         <div class="row">
-          <div class="row">
-            <div class="col xs12 md6">
-              <mat-form-field>
-                <input
-                  matInput
-                  maxlength="20"
-                  placeholder="Student name..."
-                  formControlName="lastName"
-                />
-                <mat-error
-                  *ngIf="c['lastName'].errors && c['lastName'].touched"
-                >
-                  Lastname is required
-                </mat-error>
-              </mat-form-field>
-            </div>
-            <div class="col xs12 md6">
-              <mat-form-field>
-                <input
-                  matInput
-                  placeholder="Student firstname..."
-                  formControlName="firstName"
-                />
-              </mat-form-field>
-            </div>
+          <div class="col xs12 md6">
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Student login..."
+                formControlName="login"
+              />
+              <mat-error *ngIf="c['login'].errors && c['login'].touched">
+                <span *ngIf="c['login'].hasError('required')">
+                  Login cannot be empty
+                </span>
+                <span *ngIf="c['login'].hasError('minlength')">
+                  Not enough chars (at least 8)
+                </span>
+              </mat-error>
+            </mat-form-field>
           </div>
 
           <div class="col xs12 md6">
@@ -121,6 +112,7 @@
       <button mat-raised-button color="primary" [disabled]="form.invalid">
         Add
       </button>
+
       <!-- creation d'un boutton add, mat-raised-button => directive du module MatButtonModule,ça fera un beau bouton avec un effet a l'intérieur. -->
     </form>
     {{ form.value | json }}
