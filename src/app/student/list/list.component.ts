@@ -42,6 +42,15 @@ export class ListComponent implements OnInit {
     console.log(`previous`);
     this.router.navigate(['/dashboard']);
   }
+  public clickOn(object: any) {
+    console.log(
+      ` You have selected a student, LastName: ` +
+        object.lastName.toUpperCase() +
+        ` And FirstName: ` +
+        object.firstName
+    );
+    this.router.navigate(['/', 'student', object.id, 'update']);
+  }
 
   sortById(order: 'asc' | 'desc') {
     this.students.sort((studentA, studentB) => {

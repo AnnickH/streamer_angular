@@ -22,23 +22,34 @@ table {
       background-color: #f9f9f9;
     } // pour afficher les colonnes et pas la ligne on sort l'élément et on écrit: // tr:nth-child(even) {background-color: #e0acf8;}
   }
-  span {
-    &.bubble {
-      width: 1.2em;
-      height: 1.2em;
-      display: inline-block;
-      color: #292b9b;
-      padding: 10px 10px;
-      background-color: #f5f5f5;
-      border-radius: 50%; /* taille du rayon pour arrondir les coins */
-      text-align: center;
+  span.bubble .but {
+    width: 1.2em;
+    height: 1.2em;
+    display: flex;
+    color: #292b9b;
+    padding: 1em;
+    background-color: #f5f5f5;
+    border-radius: 50%; /* taille du rayon pour arrondir les coins */
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border: 0.5px solid black;
+    cursor: pointer;
 
-      .bubble td {
-        text-align: center; /* centre le texte horizontalement */
-        vertical-align: middle; /* centre le texte verticalement */
-      }
+    .bubble td {
+      text-align: center; /* centre le texte horizontalement */
+      vertical-align: middle; /* centre le texte verticalement */
     }
   }
+
+  // span.bubble button {
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   border: none;
+  //   background: none;
+  //   cursor: pointer;
+  // }
 }
 
 button {
