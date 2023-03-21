@@ -24,7 +24,9 @@ export class StudentService {
     return this._httpClient.get<IStudent[]>(this.endpoint);
   }
 
-  public findOne(id: number): void {}
+  public findOne(id: number): Observable<StudentModel> {
+    return this._httpClient.get<any>(this.endpoint + '/' + id);
+  }
 
   public findByEmail(email: string): void {}
 
