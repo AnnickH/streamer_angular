@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { StudentService } from '../services/student.service';
 import { IStudent } from '../interfaces/i-student';
+import { StudentModel } from '../models/student-model';
 
 @Component({
   selector: 'app-add',
@@ -19,6 +20,8 @@ import { IStudent } from '../interfaces/i-student';
 })
 export class AddComponent implements OnInit {
   public form: FormGroup = new FormGroup({});
+  public student: StudentModel = new StudentModel();
+
   isSubmitting = false;
   // va nous permettre de collection des contrôles de formulaire (un champ), avec toutes les spécificités
   constructor(
