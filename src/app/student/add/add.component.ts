@@ -12,6 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { StudentService } from '../services/student.service';
 import { IStudent } from '../interfaces/i-student';
 import { StudentModel } from '../models/student-model';
+import { StudentFormService } from '../services/student-form.service';
 
 @Component({
   selector: 'app-add',
@@ -25,48 +26,15 @@ export class AddComponent implements OnInit {
   isSubmitting = false;
   // va nous permettre de collection des contrôles de formulaire (un champ), avec toutes les spécificités
   constructor(
-    private _formBuilder: FormBuilder, //vient de la librairie angularFroms, utilitaire qui construit un formulaire
+    private _formService: StudentFormService,
+    /* private _formBuilder: FormBuilder, //vient de la librairie angularFroms, utilitaire qui construit un formulaire */
     private _service: StudentService,
     private _snackBar: MatSnackBar,
     private _router: Router
   ) {}
 
   ngOnInit(): void {
-    this.form = this._formBuilder.group({
-      //group defini le controle des champs d'un formulaire
-      lastName: [
-        //caractéristique transmit dans un tableau, contrainte dans le tableau
-        '', //Default value
-        [Validators.required], //Validator function to add to this field (contient les fonctions de validation, requit)
-      ],
-      email: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern(/[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/), // permet de fixer des contraintes, expressions regulière
-        ],
-      ],
-      firstName: [''],
-      phoneNumber: [''],
-      login: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(20),
-        ],
-      ],
-      password: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.pattern(
-            /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
-          ),
-        ],
-      ],
-    });
+    this.form = this._formService.form; //on reccup le formulaire dans le student-form.Service
   }
 
   public get c(): { [key: string]: AbstractControl } {

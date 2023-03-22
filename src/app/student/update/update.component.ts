@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { StudentModel } from '../models/student-model';
+import { StudentFormService } from '../services/student-form.service';
 import { StudentService } from '../services/student.service';
 
 @Component({
@@ -22,7 +23,7 @@ export class UpdateComponent implements OnInit {
   constructor(
     private _route: ActivatedRoute,
     private _service: StudentService,
-    private _formBuilder: FormBuilder
+    private _studentFormService: StudentFormService
   ) {}
 
   ngOnInit(): void {
@@ -31,7 +32,8 @@ export class UpdateComponent implements OnInit {
     this._service.findOne(id).subscribe({
       next: (student: StudentModel) => {
         this.student = student;
-        this._buildForm();
+        this._studentFormService.buildForm(this.student);
+        this.form = this._studentFormService.form;
         // console.log(JSON.stringify(student));
       },
       error: (error: any) => {
@@ -57,44 +59,6 @@ export class UpdateComponent implements OnInit {
       error: (error: any) => {
         console.log(JSON.stringify(error));
       },
-    });
-  }
-
-  private _buildForm(): void {
-    this.form = this._formBuilder.group({
-      //group defini le controle des champs d'un formulaire
-      lastName: [
-        //caractéristique transmit dans un tableau, contrainte dans le tableau
-        this.student!.lastName,
-        [Validators.required],
-      ],
-      email: [
-        this.student!.email,
-        [
-          Validators.required,
-          Validators.pattern(/[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/), // permet de fixer des contraintes, expressions regulière
-        ],
-      ],
-      firstName: [this.student!.firstName],
-      phoneNumber: [this.student!.phoneNumber],
-      login: [
-        this.student!.login,
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(20),
-        ],
-      ],
-      password: [
-        this.student!.password,
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.pattern(
-            /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
-          ),
-        ],
-      ],
     });
   }
 }
