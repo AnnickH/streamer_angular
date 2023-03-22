@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { take } from 'rxjs';
 import { StudentFormComponent } from '../dialogs/student-form/student-form.component';
@@ -27,6 +28,21 @@ export class ListComponent implements OnInit {
   ) {}
   students: IStudent[] = [];
 
+  public delete(object: any): void {
+    const lineElement = document.querySelector(`[data="${object}"]`);
+    if (object.isSelected === true) {
+      console.log(
+        `Supprimer le student  ` +
+          object.lastName +
+          ` ` +
+          object.firstName +
+          ` ` +
+          lineElement
+      );
+    } else {
+      console.log(`rien`);
+    }
+  }
   ngOnInit(): void {
     this._studentService
       .findSimpleStudents() // findAll -> charge toute les données, findSimpleEtudiant refère a la fonction défini en back, et prend que ce qu'on a besoin
@@ -141,16 +157,40 @@ export class ListComponent implements OnInit {
       height: '700px',
       hasBackdrop: false,
       data: { student }, // student is passed to dialog => {student: student}
+      panelClass: 'my-dialog-class',
     });
-
     console.log(`Open the add modal`);
+
     dialogRef.afterClosed().subscribe((result: any) => {
       if (result) {
+        //convert StudentModel to SimpleStudent(or Istudent)
+        const iStudent: IStudent = {
+          id: result.id,
+          lastName: result.lastName,
+          firstName: result.firstName,
+          email: result.email,
+          login: result.login,
+          password: result.password,
+          isSelected: false,
+        };
         console.log(`Dialog result: ${JSON.stringify(result)}`);
+        //if student already exists in students: replace it
+        const index: number = this.students.findIndex(
+          //findIndex return le premier elever dans le tableau trouver sinon il renvoie un -1 qui signifie qu'il n'exite pas
+          (student: IStudent) => student.id === iStudent.id
+        );
+        if (index > -1) {
+          this.students.splice(index, 1, iStudent);
+        } else {
+          this.students.push(iStudent);
+        }
+        //else add it (and re sort table)
+        this.students.sort((s1: IStudent, s2: IStudent) => s1.id! - s2.id!);
       } else {
-        console.log(`No result`);
+        console.log(`No result, lunch time`);
       }
     });
   }
+
   // }
 }

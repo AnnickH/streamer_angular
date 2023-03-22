@@ -6,7 +6,11 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { map } from 'rxjs';
+import { Observable } from 'rxjs/internal/Observable';
+import { IStudent } from '../interfaces/i-student';
 import { StudentModel } from '../models/student-model';
+import { StudentService } from './student.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +21,8 @@ export class StudentFormService {
 
   constructor(
     //injection de dépendance dans le parametre du constructeur()
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private _studentSevice: StudentService
   ) {
     this._buildForm(); //formulaire vide
   }
@@ -36,6 +41,31 @@ export class StudentFormService {
   get form(): FormGroup {
     //getter magic
     return this._form; // attention a bien mettre _ sinon boucle sur le getter
+  }
+
+  public onSubmit(): Observable<any> {
+    if (this._student.id) {
+      this._student.lastName = this.c['lastName'].value;
+      this._student.firstName = this.c['firstName'].value;
+      this._student.email = this.c['email'].value;
+      this._student.phoneNumber = this.c['phoneNumber'].value;
+      this._student.login = this.c['login'].value;
+      this._student.password = this.c['password'].value;
+      return this._studentSevice
+        .update(this._student)
+        .pipe(map((_) => this._student));
+    }
+
+    const student: IStudent = {
+      lastName: this.c['lastName'].value,
+      firstName: this.c['firstName'].value,
+      email: this.c['email'].value,
+      phoneNumber: this.c['phoneNumber'].value,
+      login: this.c['login'].value,
+      password: this.c['password'].value,
+      isSelected: false,
+    };
+    return this._studentSevice.add(student);
   }
 
   private _buildForm(): void {

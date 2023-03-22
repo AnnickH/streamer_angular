@@ -66,6 +66,7 @@
     </th>
     <th>First Name</th>
     <th>Email</th>
+    <th><button>Delete</button></th>
   </tr>
   <!-- </thead> -->
   <!-- <tbody *ngIf="students.length"> -->
@@ -96,6 +97,16 @@
     <td>{{ student.lastName | uppercase }}</td>
     <td>{{ student.firstName }}</td>
     <td>{{ student.email }}</td>
+    <td>
+      <button
+        mat-mini-fab
+        color="primary"
+        aria-label="Example icon button with a delete icon"
+        (click)="delete(student)"
+      >
+        <i>delete</i>
+      </button>
+    </td>
   </tr>
   <!-- </tbody> -->
 </table>

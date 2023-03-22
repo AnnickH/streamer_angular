@@ -1,5 +1,8 @@
 <div class="row">
   <div class="col xs12">
+    <div mat-dialog-actions>
+      <button mat-button id="no" (click)="onNoClick()">X</button>
+    </div>
     <!--ok le form ne sera ingecter dans le dom seulement et si student est pas null -->
     <form [formGroup]="form">
       <!-- permet a angular, que la class ou l'objet va se matérialisé ici -->
@@ -119,7 +122,7 @@
 </div>
 <p>student-form work!</p>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">no</button>
+  <!-- <button mat-button id="no" (click)="onNoClick()">no</button> -->
   <button
     mat-button
     (click)="onSubmit()"

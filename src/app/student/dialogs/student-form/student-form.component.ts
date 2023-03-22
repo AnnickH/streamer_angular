@@ -46,6 +46,9 @@ export class StudentFormComponent implements OnInit {
    * Event triggered if user clivk on Yes button
    */
   public onSubmit(): void {
-    this.dialogRef.close(this._student);
+    this._studentFormService.onSubmit().subscribe((student: StudentModel) => {
+      //on appelle notre service qui appelle 1 autre qui lui fait appelle a la base de donnée
+      this.dialogRef.close(student); // retourne le student mit à jour
+    });
   }
 }
