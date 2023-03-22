@@ -1,7 +1,10 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { take } from 'rxjs';
+import { StudentFormComponent } from '../dialogs/student-form/student-form.component';
 import { IStudent } from '../interfaces/i-student';
+import { StudentModel } from '../models/student-model';
 import { StudentService } from '../services/student.service';
 
 @Component({
@@ -19,7 +22,8 @@ export class ListComponent implements OnInit {
   constructor(
     private _studentService: StudentService,
     private router: Router, //injection de studentService
-    private _cd: ChangeDetectorRef
+    private _cd: ChangeDetectorRef,
+    private _matDialog: MatDialog
   ) {}
   students: IStudent[] = [];
 
@@ -36,6 +40,24 @@ export class ListComponent implements OnInit {
         console.log(students);
         console.log(`Got ${students.length} students`);
       }); //tuyau responsable d'une tâche
+  }
+
+  public openForm(): void {
+    const dialogRef = this._matDialog.open(StudentFormComponent, {
+      width: '500px',
+      height: '700px',
+      hasBackdrop: false,
+      data: { student: new StudentModel() /* on envoie ici un student vide */ },
+    });
+
+    console.log(`Open the add modal`);
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result) {
+        console.log(`Dialog result: ${JSON.stringify(result)}`);
+      } else {
+        console.log(`No result`);
+      }
+    });
   }
 
   public onClick(object: any): void {
