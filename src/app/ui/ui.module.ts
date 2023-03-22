@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [],
@@ -22,5 +23,6 @@ export class UiModule {
     MatInputModule,
     MatButtonModule,
     MatSnackBarModule,
+    MatDialogModule,
   ];
 }
