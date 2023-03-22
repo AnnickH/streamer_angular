@@ -38,7 +38,7 @@ export class AddComponent implements OnInit {
   }
 
   public get c(): { [key: string]: AbstractControl } {
-    return this.form.controls;
+    return this._formService.c;
   }
 
   public onSubmit(): void {

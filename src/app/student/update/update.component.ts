@@ -42,7 +42,7 @@ export class UpdateComponent implements OnInit {
     });
   }
   get c(): { [key: string]: AbstractControl } {
-    return this.form.controls;
+    return this._studentFormService.c;
   }
   onSubmit(): void {
     this.student!.lastName = this.c /* form.controls */['lastName'].value;

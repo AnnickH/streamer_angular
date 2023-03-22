@@ -1,6 +1,11 @@
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { StudentModel } from '../models/student-model';
 
 @Injectable({
@@ -15,6 +20,10 @@ export class StudentFormService {
     private _formBuilder: FormBuilder
   ) {
     this._buildForm(); //formulaire vide
+  }
+
+  public get c(): { [key: string]: AbstractControl } {
+    return this._form.controls;
   }
   public buildForm(student: StudentModel) {
     this._student = student;
