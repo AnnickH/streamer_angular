@@ -42,22 +42,16 @@ export class ListComponent implements OnInit {
       }); //tuyau responsable d'une tâche
   }
 
-  public openForm(): void {
-    const dialogRef = this._matDialog.open(StudentFormComponent, {
-      width: '500px',
-      height: '700px',
-      hasBackdrop: false,
-      data: { student: new StudentModel() /* on envoie ici un student vide */ },
-    });
-
-    console.log(`Open the add modal`);
-    dialogRef.afterClosed().subscribe((result: any) => {
-      if (result) {
-        console.log(`Dialog result: ${JSON.stringify(result)}`);
-      } else {
-        console.log(`No result`);
-      }
-    });
+  public openForm(student: IStudent | null = null): void {
+    if (!student) {
+      this._openDialog(new StudentModel());
+    } else {
+      this._studentService
+        .findOne(student.id!)
+        .subscribe((completeStudent: StudentModel) => {
+          this._openDialog(completeStudent);
+        });
+    }
   }
 
   public onClick(object: any): void {
@@ -139,6 +133,24 @@ export class ListComponent implements OnInit {
     this.students.forEach(
       (s: IStudent) => (s.isSelected = this.checkUncheckAll)
     );
+  }
+
+  private _openDialog(student: StudentModel): void {
+    const dialogRef = this._matDialog.open(StudentFormComponent, {
+      width: '500px',
+      height: '700px',
+      hasBackdrop: false,
+      data: { student }, // student is passed to dialog => {student: student}
+    });
+
+    console.log(`Open the add modal`);
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result) {
+        console.log(`Dialog result: ${JSON.stringify(result)}`);
+      } else {
+        console.log(`No result`);
+      }
+    });
   }
   // }
 }
