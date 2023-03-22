@@ -32,6 +32,7 @@ export class ListComponent implements OnInit {
       .subscribe((students: IStudent[]) => {
         //reccupère les données qui ont déjà été manipulée
         this.students = students;
+        this.students.sort((s1: IStudent, s2: IStudent) => s1.id! - s2.id!); //trie l'ordre des id
         console.log(students);
         console.log(`Got ${students.length} students`);
       }); //tuyau responsable d'une tâche
@@ -41,6 +42,15 @@ export class ListComponent implements OnInit {
     // if (object.title)
     console.log(`previous`);
     this.router.navigate(['/dashboard']);
+  }
+  public clickOn(object: any) {
+    console.log(
+      ` You have selected a student, LastName: ` +
+        object.lastName.toUpperCase() +
+        ` And FirstName: ` +
+        object.firstName
+    );
+    this.router.navigate(['/', 'student', object.id, 'update']);
   }
 
   sortById(order: 'asc' | 'desc') {

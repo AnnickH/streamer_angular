@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map, take, tap } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { IStudent } from '../interfaces/i-student';
 import { StudentModel } from '../models/student-model';
@@ -23,15 +24,42 @@ export class StudentService {
     return this._httpClient.get<IStudent[]>(this.endpoint);
   }
 
-  public findOne(id: number): void {}
+  public findOne(id: number): Observable<StudentModel> {
+    return this._httpClient.get<any>(this.endpoint + '/' + id).pipe(
+      tap((response: any) => {
+        //permet d'intercepté les réponses de l'étape juste avant (voir ce qu'il contient)
+        console.log(JSON.stringify(response));
+      }),
+      take(1),
+      map((student: any) => student)
+    );
+  }
 
   public findByEmail(email: string): void {}
 
   public findByLoginOrEmail(email: string, login: string): void {}
 
-  public add(student: IStudent): void {}
+  public add(student: IStudent): Observable<any> {
+    console.log(`Controller send ${JSON.stringify(student)}`);
+    return this._httpClient
+      .post<IStudent>(this.endpoint, student)
+      .pipe(take(1));
+    // .subscribe({
+    //   next: (reponse: IStudent) => {
+    //     //si la requete réussi
+    //     console.log(JSON.stringify(reponse));
+    //   },
+    //   error: (error: any) => {
+    //     console.log(`Something went wrong: ${JSON.stringify(error)}`);
+    //   },
+    // });
+  }
 
-  public update(student: StudentModel): void {}
+  public update(student: StudentModel): Observable<HttpResponse<any>> {
+    return this._httpClient.put<StudentModel>(this.endpoint, student, {
+      observe: 'response',
+    });
+  }
 
   public remove(student: StudentModel): void {}
 

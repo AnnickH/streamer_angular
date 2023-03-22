@@ -1,0 +1,13 @@
+.mat-raised-button:enabled {
+  background-image: linear-gradient(
+    to right,
+    rgb(13, 5, 43),
+    rgb(61, 47, 110),
+    rgb(106, 92, 156),
+    rgb(195, 186, 228)
+  );
+}
+.mat-raised-button:disabled {
+  opacity: 0.5; /* Réduire l'opacité du bouton lorsqu'il est désactivé */
+  background-image: none; /* Supprimer le fond dégradé du bouton */
+}

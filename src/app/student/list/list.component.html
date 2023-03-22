@@ -76,7 +76,17 @@
     </td>
     <td>{{ student.id }}</td>
     <td>
-      <span class="bubble">{{ student | initials : "lastNameFirst" }}</span>
+      <span class="bubble">
+        <!-- Anchor to UpdateComponent with the correct id -->
+        <button
+          type="button"
+          class="but"
+          title=" Click for Update Student"
+          (click)="clickOn(student)"
+        >
+          {{ student | initials : "lastNameFirst" }}
+        </button>
+      </span>
     </td>
     <!-- on ajouter | initials pour affichier une colonne en plus pour afficher les initials -->
     <td>{{ student.lastName | uppercase }}</td>

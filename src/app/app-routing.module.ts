@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListComponent } from './student/list/list.component';
 import { SharedModule } from './shared/shared.module';
+import { AddComponent } from './student/add/add.component';
+import { UpdateComponent } from './student/update/update.component';
 
 @NgModule({
   imports: [RouterModule.forRoot(AppRoutingModule.routes), SharedModule],
@@ -15,19 +17,33 @@ export class AppRoutingModule {
       redirectTo: 'dashboard', // Redirect to another Route object
       pathMatch: 'full', // Mean Angular read the whole URI instead of first matching occ
     },
+
     {
       path: 'dashboard',
       component: DashboardComponent,
     },
+
     {
       path: 'student/list',
       component: ListComponent,
     },
+
+    {
+      path: 'student/add',
+      component: AddComponent,
+    },
+
+    {
+      path: 'student/:id/update', // :id => sera remplacé par l'ID d'un Student à l'exécution
+      component: UpdateComponent,
+    },
+
     {
       path: 'course',
       loadChildren: () =>
         import(`./course/course.module`).then((m) => m.CourseModule),
     },
+
     {
       path: '**', // n'importe quelle chemin qui n'existe pas dans le routeur, toujours le dernier rencontré
       redirectTo: 'dashboard', // Or any 404 component you want!
