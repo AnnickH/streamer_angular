@@ -51,8 +51,16 @@ export class ListComponent implements OnInit {
           this.students.splice(this.students.indexOf(student), 1);
         },
       });
+      alert(
+        `Succes` +
+          student.lastName +
+          ` ` +
+          student.firstName +
+          ` has been deleted`
+      );
     } else {
       console.log(`rien`);
+      alert(`Nothing was selected`);
     }
   }
   /* public delete(object: any): void {
