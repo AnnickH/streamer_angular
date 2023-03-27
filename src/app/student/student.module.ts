@@ -8,9 +8,10 @@ import { SharedModule } from '../shared/shared.module';
 import { InitialsPipe } from './pipes/initials.pipe';
 import { AddComponent } from './add/add.component';
 import { UpdateComponent } from './update/update.component';
+import { StudentFormComponent } from './dialogs/student-form/student-form.component';
 
 @NgModule({
-  declarations: [ListComponent, InitialsPipe, AddComponent, UpdateComponent],
+  declarations: [ListComponent, InitialsPipe, AddComponent, UpdateComponent, StudentFormComponent],
   imports: [
     /* CommonModule, */
     HttpClientModule,

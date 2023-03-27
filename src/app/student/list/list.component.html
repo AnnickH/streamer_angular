@@ -23,6 +23,10 @@
 </div> -->
 
 <table>
+  <caption>
+    Students -
+    <span (click)="openForm()"> Add</span>
+  </caption>
   <!-- <thead> -->
   <tr>
     <th>
@@ -62,6 +66,7 @@
     </th>
     <th>First Name</th>
     <th>Email</th>
+    <th><button>Delete</button></th>
   </tr>
   <!-- </thead> -->
   <!-- <tbody *ngIf="students.length"> -->
@@ -82,7 +87,7 @@
           type="button"
           class="but"
           title=" Click for Update Student"
-          (click)="clickOn(student)"
+          (click)="openForm(student)"
         >
           {{ student | initials : "lastNameFirst" }}
         </button>
@@ -92,6 +97,16 @@
     <td>{{ student.lastName | uppercase }}</td>
     <td>{{ student.firstName }}</td>
     <td>{{ student.email }}</td>
+    <td>
+      <button
+        mat-mini-fab
+        color="primary"
+        aria-label="Example icon button with a delete icon"
+        (click)="delete(student)"
+      >
+        <i>delete</i>
+      </button>
+    </td>
   </tr>
   <!-- </tbody> -->
 </table>
