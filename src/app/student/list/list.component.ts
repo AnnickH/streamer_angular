@@ -7,6 +7,7 @@ import { StudentFormComponent } from '../dialogs/student-form/student-form.compo
 import { IStudent } from '../interfaces/i-student';
 import { StudentModel } from '../models/student-model';
 import { StudentService } from '../services/student.service';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-list',
@@ -28,21 +29,6 @@ export class ListComponent implements OnInit {
   ) {}
   students: IStudent[] = [];
 
-  public delete(object: any): void {
-    const lineElement = document.querySelector(`[data="${object}"]`);
-    if (object.isSelected === true) {
-      console.log(
-        `Supprimer le student  ` +
-          object.lastName +
-          ` ` +
-          object.firstName +
-          ` ` +
-          lineElement
-      );
-    } else {
-      console.log(`rien`);
-    }
-  }
   ngOnInit(): void {
     this._studentService
       .findSimpleStudents() // findAll -> charge toute les données, findSimpleEtudiant refère a la fonction défini en back, et prend que ce qu'on a besoin
@@ -56,6 +42,51 @@ export class ListComponent implements OnInit {
         console.log(students);
         console.log(`Got ${students.length} students`);
       }); //tuyau responsable d'une tâche
+  }
+
+  public delete(student: any): void {
+    if (student.isSelected === true) {
+      this._studentService.remove(student.id).subscribe({
+        next: (response: HttpResponse<any>) => {
+          this.students.splice(this.students.indexOf(student), 1);
+        },
+      });
+    } else {
+      console.log(`rien`);
+    }
+  }
+  /* public delete(object: any): void {
+    const lineElement = document.querySelector(`[data="${object}"]`);
+    if (object.isSelected === true) {
+      console.log(
+        `Supprimer le student  ` +
+          object.lastName +
+          ` ` +
+          object.firstName +
+          ` ` +
+          lineElement
+      );
+    } else {
+      console.log(`rien`);
+    }
+  } */
+
+  public multiDelete(student: any): void {
+    const lineElement = document.querySelector(`[data="${student}"]`);
+    if (student.isSelected === true) {
+      console.log(student.isSelected.count + `d'élément sélectionné`);
+      console.log(
+        student.lastName +
+          ` ` +
+          student.firstName +
+          ` ` +
+          lineElement +
+          this.students
+      );
+    } else {
+      console.log(`rien`);
+      console.log(this.students);
+    }
   }
 
   public openForm(student: IStudent | null = null): void {
