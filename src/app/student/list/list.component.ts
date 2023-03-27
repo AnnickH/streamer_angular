@@ -74,7 +74,7 @@ export class ListComponent implements OnInit {
   public multiDelete(student: any): void {
     const lineElement = document.querySelector(`[data="${student}"]`);
     if (student.isSelected === true) {
-      console.log(student.isSelected.count + `d'élément sélectionné`);
+      console.log(student.isSelected.count + `element selected`);
       console.log(
         student.lastName +
           ` ` +
