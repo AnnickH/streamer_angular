@@ -4,7 +4,7 @@
     <div class="col xs10">
       {{ course.title }}
     </div>
-    <div class="col xs1">{{ course.modules.length }} items</div>
+    <div class="col xs1">{{ course.modules.length }} modules</div>
 
     <!-- Icon open / close -->
 
@@ -24,5 +24,6 @@
   <app-module-list
     [ngClass]="{ 'is-visible': course.isSelected }"
     [modules]="course.modules"
-  ></app-module-list>
+  >
+  </app-module-list>
 </div>
