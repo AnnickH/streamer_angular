@@ -22,4 +22,19 @@ export class ModuleListComponent implements OnInit {
     console.log(`module : ${module.isSelected}`);
     this.onToggleCourse.emit(module);
   }
+
+  onMediasToggle(media: MediaType): void {
+    console.log(
+      `Course was toggled ${media.isSelected ? 'close all but me' : 'close me'}`
+    );
+    if (media.isSelected) {
+      this.modules
+        .filter((inMedia: ModuleType) => inMedia.isSelected)
+        .forEach((inMedia: ModuleType) => {
+          if (media.id !== inMedia.id) {
+            inMedia.isSelected = false;
+          }
+        });
+    }
+  }
 }

@@ -9,13 +9,13 @@ import { MediaType } from '../../types/media-type';
 })
 export class MediaComponent implements OnInit {
   @Input() medias: MediaType[] = [];
-  @Output() public onToggleCourse: EventEmitter<MediaType> = new EventEmitter();
+  @Output() public onToggleMedia: EventEmitter<MediaType> = new EventEmitter();
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
   public reveal(media: MediaType) {
     media.isSelected = !media.isSelected;
     console.log(`media : ${media.isSelected}`);
-    this.onToggleCourse.emit(media);
+    this.onToggleMedia.emit(media);
   }
 }
