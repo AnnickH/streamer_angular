@@ -22,6 +22,16 @@ export class CourseTileComponent implements OnInit {
     this.onToggleCourse.emit(course);
   }
 
+  public remove() {
+    console.log(`cc remove`);
+  }
+  public update() {
+    console.log(`cc update`);
+  }
+  public view() {
+    console.log(`cc view`);
+  }
+
   /* onMediasToggle(module: ModuleType): void {
     console.log(
       `Course was toggled ${
