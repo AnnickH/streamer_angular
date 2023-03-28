@@ -8,9 +8,15 @@ import { TileComponent } from './dashboard/components/tile/tile.component';
 import { StudentModule } from './student/student.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MediaComponent } from './course/components/media/media.component';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, TileComponent],
+  declarations: [
+    AppComponent,
+    DashboardComponent,
+    TileComponent,
+    // MediaComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

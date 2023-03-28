@@ -5,6 +5,7 @@ import { ListComponent } from './student/list/list.component';
 import { SharedModule } from './shared/shared.module';
 import { AddComponent } from './student/add/add.component';
 import { UpdateComponent } from './student/update/update.component';
+import { MediaComponent } from './course/components/media/media.component';
 
 @NgModule({
   imports: [RouterModule.forRoot(AppRoutingModule.routes), SharedModule],
@@ -31,6 +32,11 @@ export class AppRoutingModule {
     {
       path: 'student/add',
       component: AddComponent,
+    },
+
+    {
+      path: 'media/list',
+      component: MediaComponent,
     },
 
     {
