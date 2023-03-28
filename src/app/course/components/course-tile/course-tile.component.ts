@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { CourseFormComponent } from '../../dialogs/course-form/course-form.component';
 import { CourseListType } from '../../types/course-list-type';
+import { CourseType } from '../../types/course-type';
 import { ModuleType } from '../../types/module-type';
 
 @Component({
@@ -12,7 +15,7 @@ export class CourseTileComponent implements OnInit {
   @Input() public course!: CourseListType;
   @Output() public onToggleCourse: EventEmitter<CourseListType> =
     new EventEmitter();
-  constructor() {}
+  constructor(private _matDialog: MatDialog) {}
 
   ngOnInit(): void {}
   // add correction
@@ -20,6 +23,16 @@ export class CourseTileComponent implements OnInit {
     course.isSelected = !course.isSelected;
     console.log(`Course was toggled : ${course.isSelected}`);
     this.onToggleCourse.emit(course);
+  }
+
+  public addCourse() {
+    const dialogRef = this._matDialog.open(CourseFormComponent, {
+      width: '250px',
+      data: {},
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
   }
 
   public remove() {
@@ -48,4 +61,14 @@ export class CourseTileComponent implements OnInit {
         });
     }
   } */
+  private _openDialog(course: CourseType): void {
+    const dialogRef = this._matDialog.open(CourseTileComponent, {
+      width: '500px',
+      height: '700px',
+      hasBackdrop: false,
+      data: { message: 'hello word' + course.isSelected }, // student is passed to dialog => {student: student}
+      panelClass: 'my-dialog-class',
+    });
+    console.log(`Open the add modal`);
+  }
 }

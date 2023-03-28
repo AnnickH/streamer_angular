@@ -9,9 +9,11 @@ import { ModuleListComponent } from './components/module-list/module-list.compon
 import { AppComponent } from '../app.component';
 import { SharedModule } from '../shared/shared.module';
 import { MediaComponent } from './components/media/media.component';
+import { CourseFormComponent } from './dialogs/course-form/course-form.component';
+import { CourseAddComponent } from './dialogs/course-add/course-add.component';
 
 @NgModule({
-  declarations: [CourseTileComponent, ModuleListComponent, ListComponent, MediaComponent],
+  declarations: [CourseTileComponent, ModuleListComponent, ListComponent, MediaComponent, CourseFormComponent, CourseAddComponent],
   imports: [CourseRoutingModule, SharedModule],
 })
 export class CourseModule {}
