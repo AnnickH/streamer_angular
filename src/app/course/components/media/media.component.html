@@ -8,7 +8,8 @@
           down: media.isSelected
         }"
         (click)="reveal(media)"
-        >{{ media.title }} {{ media.duration }} {{ media.typemedia.title }}
+        >{{ media.title }}
+        <div>Duration: {{ media.duration }}. {{ media.typemedia.title }}</div>
       </span>
     </li>
   </ul>
