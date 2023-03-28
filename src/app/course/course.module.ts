@@ -8,9 +8,10 @@ import { ModuleListComponent } from './components/module-list/module-list.compon
 
 import { AppComponent } from '../app.component';
 import { SharedModule } from '../shared/shared.module';
+import { MediaComponent } from './components/media/media.component';
 
 @NgModule({
-  declarations: [CourseTileComponent, ModuleListComponent, ListComponent],
+  declarations: [CourseTileComponent, ModuleListComponent, ListComponent, MediaComponent],
   imports: [CourseRoutingModule, SharedModule],
 })
 export class CourseModule {}
