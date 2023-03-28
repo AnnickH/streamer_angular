@@ -1,5 +1,23 @@
-<ul class="module-list">
-  <li *ngFor="let module of modules">
-    {{ module.name }}
-  </li>
-</ul>
+<div *ngFor="let module of modules">
+  <ul class="module-list">
+    <li>
+      {{ module.name }}
+      <span
+        [ngClass]="{
+          'icon-list': true,
+          up: !module.isSelected,
+          down: module.isSelected
+        }"
+        (click)="reveal(module)"
+        >&gt;</span
+      >
+    </li>
+    <li>
+      <app-media
+        [ngClass]="{ 'is-visible': module.isSelected }"
+        [medias]="module.medias"
+      >
+      </app-media>
+    </li>
+  </ul>
+</div>

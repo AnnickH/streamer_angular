@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { MediaType } from '../../types/media-type';
 import { ModuleType } from '../../types/module-type';
 
 @Component({
@@ -9,8 +10,16 @@ import { ModuleType } from '../../types/module-type';
 })
 export class ModuleListComponent implements OnInit {
   @Input() modules: ModuleType[] = [];
+  @Output() public onToggleCourse: EventEmitter<ModuleType> =
+    new EventEmitter();
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  public reveal(module: ModuleType) {
+    module.isSelected = !module.isSelected;
+    console.log(`module : ${module.isSelected}`);
+    this.onToggleCourse.emit(module);
+  }
 }
