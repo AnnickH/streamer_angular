@@ -12,6 +12,7 @@ import { MediaComponent } from './components/media/media.component';
 import { CourseFormComponent } from './dialogs/course-form/course-form.component';
 import { CourseAddComponent } from './dialogs/course-add/course-add.component';
 import { CourseRemoveComponent } from './dialogs/course-remove/course-remove.component';
+import { PipeTimePipe } from './pipe/pipe-time.pipe';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CourseRemoveComponent } from './dialogs/course-remove/course-remove.com
     CourseFormComponent,
     CourseAddComponent,
     CourseRemoveComponent,
+    PipeTimePipe,
   ],
   imports: [CourseRoutingModule, SharedModule, CommonModule],
 })
