@@ -1,7 +1,7 @@
 export class CourseModel {
   private _id?: number;
   private _title: string = '';
-  private _created_at: string = '';
+  private _created_at?: string = '';
   private _updated_at?: string = '';
   private _objective?: string = '';
 
@@ -22,7 +22,7 @@ export class CourseModel {
   }
 
   get created_at() {
-    return this._created_at;
+    return this._created_at === undefined ? '' : this._created_at;
   }
 
   set created_at(val: string) {
