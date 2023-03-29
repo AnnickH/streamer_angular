@@ -8,8 +8,9 @@
           down: media.isSelected
         }"
         (click)="reveal(media)"
-        >{{ media.title }} Duration: {{ media.duration }}.
-        {{ media.typemedia.title }}
+        >{{ media.title }}
+        <span>{{ media.duration | pipeTime }}.</span>
+        <span>{{ media.typemedia.title }}</span>
       </span>
     </li>
   </ul>
