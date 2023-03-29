@@ -11,9 +11,18 @@ import { SharedModule } from '../shared/shared.module';
 import { MediaComponent } from './components/media/media.component';
 import { CourseFormComponent } from './dialogs/course-form/course-form.component';
 import { CourseAddComponent } from './dialogs/course-add/course-add.component';
+import { CourseRemoveComponent } from './dialogs/course-remove/course-remove.component';
 
 @NgModule({
-  declarations: [CourseTileComponent, ModuleListComponent, ListComponent, MediaComponent, CourseFormComponent, CourseAddComponent],
-  imports: [CourseRoutingModule, SharedModule],
+  declarations: [
+    CourseTileComponent,
+    ModuleListComponent,
+    ListComponent,
+    MediaComponent,
+    CourseFormComponent,
+    CourseAddComponent,
+    CourseRemoveComponent,
+  ],
+  imports: [CourseRoutingModule, SharedModule, CommonModule],
 })
 export class CourseModule {}

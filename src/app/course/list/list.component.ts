@@ -56,6 +56,17 @@ export class ListComponent implements OnInit {
         });
     }
   }
+
+  public addCourse(object: any) {
+    this.router.navigate(['course/add']);
+    // const dialogRef = this._matDialog.open(CourseFormComponent, {
+    //   width: '250px',
+    //   data: {},
+    // });
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   console.log('The dialog was closed');
+    // });
+  }
 }
 
 // Fait pour le TP en haut correction avec les différents lien de différents fichiers.

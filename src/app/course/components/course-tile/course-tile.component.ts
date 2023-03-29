@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { CourseFormComponent } from '../../dialogs/course-form/course-form.component';
+import { CourseRemoveComponent } from '../../dialogs/course-remove/course-remove.component';
 import { CourseListType } from '../../types/course-list-type';
 import { CourseType } from '../../types/course-type';
 import { ModuleType } from '../../types/module-type';
@@ -13,9 +15,10 @@ import { ModuleType } from '../../types/module-type';
 export class CourseTileComponent implements OnInit {
   //add input and output
   @Input() public course!: CourseListType;
+  public tileInfo: any;
   @Output() public onToggleCourse: EventEmitter<CourseListType> =
     new EventEmitter();
-  constructor(private _matDialog: MatDialog) {}
+  constructor(private _matDialog: MatDialog, private _router: Router) {}
 
   ngOnInit(): void {}
   // add correction
@@ -25,22 +28,24 @@ export class CourseTileComponent implements OnInit {
     this.onToggleCourse.emit(course);
   }
 
-  public addCourse() {
-    const dialogRef = this._matDialog.open(CourseFormComponent, {
-      width: '250px',
-      data: {},
+  public remove(course: CourseListType) {
+    console.log(course);
+    const dialogRef = this._matDialog.open(CourseRemoveComponent, {
+      width: 'flex',
+      height: 'flex',
+      data: course,
     });
     dialogRef.afterClosed().subscribe((result) => {
+      // if()
       console.log('The dialog was closed');
     });
-  }
-
-  public remove() {
     console.log(`cc remove`);
   }
+
   public update() {
     console.log(`cc update`);
   }
+
   public view() {
     console.log(`cc view`);
   }
