@@ -26,11 +26,9 @@
     </div>
   </div>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="view()" (click)="addCourse()">
-      View course
-    </button>
+    <button mat-menu-item (click)="view()">View course</button>
     <button mat-menu-item (click)="update()">Update course</button>
-    <button mat-menu-item (click)="remove()" style="color: red">
+    <button mat-menu-item (click)="remove(course)" style="color: red">
       Remove course
     </button>
   </mat-menu>
