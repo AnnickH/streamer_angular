@@ -32,8 +32,8 @@ export class CourseRemoveComponent implements OnInit {
   }
 
   public onDelete(): void {
-    this.dialogRef.close(CourseRemoveComponent);
-    console.log('You want delete course :');
+    this.dialogRef.close();
+    console.log('You want delete course : ' + this.data.title);
     this.router.navigate(['/course/list']);
   }
 }
