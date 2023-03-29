@@ -6,6 +6,7 @@ import { SharedModule } from './shared/shared.module';
 import { AddComponent } from './student/add/add.component';
 import { UpdateComponent } from './student/update/update.component';
 import { MediaComponent } from './course/components/media/media.component';
+import { CourseAddComponent } from './course/dialogs/course-add/course-add.component';
 
 @NgModule({
   imports: [RouterModule.forRoot(AppRoutingModule.routes), SharedModule],
@@ -48,6 +49,10 @@ export class AppRoutingModule {
       path: 'course',
       loadChildren: () =>
         import(`./course/course.module`).then((m) => m.CourseModule),
+    },
+    {
+      path: 'course/add',
+      component: CourseAddComponent,
     },
 
     {
