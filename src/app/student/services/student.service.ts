@@ -61,7 +61,23 @@ export class StudentService {
     });
   }
 
-  public remove(student: StudentModel): void {}
+  public remove(id: number): Observable<HttpResponse<any>> {
+    return this._httpClient.delete<StudentModel>(`${this.endpoint}/${id}`, {
+      observe: 'response',
+    });
+  }
+
+  public removeStudents(students: Array<IStudent>): Observable<Array<number>> {
+    return this._httpClient.request<Array<number>>(
+      'delete',
+      `${this.endpoint}`,
+      {
+        body: students
+          .filter((s: IStudent) => s.isSelected)
+          .map((s: IStudent) => s.id),
+      }
+    );
+  }
 
   public findSimpleStudents() {
     return this._httpClient.get<IStudent[]>(this.endpoint + '/simple');

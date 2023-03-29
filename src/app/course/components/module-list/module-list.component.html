@@ -1,5 +1,26 @@
-<ul class="module-list">
-  <li *ngFor="let module of modules">
-    {{ module.name }}
-  </li>
-</ul>
+<div *ngFor="let module of modules" class="course">
+  <ul class="module-list">
+    <li style="display: flex">
+      <div style="width: 75%">{{ module.name }}</div>
+      <div>{{ module.medias.length }} medias</div>
+      <span
+        [ngClass]="{
+          'icon-list': true,
+          up: !module.isSelected,
+          down: module.isSelected
+        }"
+        (click)="reveal(module)"
+        style="margin-left: 10px"
+        >&gt;</span
+      >
+    </li>
+    <p class="li">
+      <app-media
+        [ngClass]="{ 'is-visible': module.isSelected }"
+        [medias]="module.medias"
+        (onToggleMedia)="onMediasToggle($event)"
+      >
+      </app-media>
+    </p>
+  </ul>
+</div>

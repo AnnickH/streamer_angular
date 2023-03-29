@@ -1,0 +1,16 @@
+<div class="col xs12 course">
+  <ul class="module-list">
+    <li *ngFor="let media of medias">
+      <span
+        [ngClass]="{
+          'icon-list': true,
+          up: !media.isSelected,
+          down: media.isSelected
+        }"
+        (click)="reveal(media)"
+        >{{ media.title }} Duration: {{ media.duration }}.
+        {{ media.typemedia.title }}
+      </span>
+    </li>
+  </ul>
+</div>

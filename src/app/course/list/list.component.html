@@ -28,11 +28,18 @@
 <!-- Display title and number -->
 <div class="row">
   <div class="col xs11 course-title">Course List</div>
+
   <div class="col xs1 course-number">{{ courses.length }} items</div>
+</div>
+<div class="col xs11 course-title">
+  <button mat-button mat-mini-fab color="accent" (click)="addCourse('')">
+    <mat-icon>add</mat-icon>
+  </button>
 </div>
 
 <ng-container *ngIf="courses.length">
   <ng-container *ngFor="let course of courses">
+    <!-- app-course-tile va dans le fichier course-tile.component.ts et va chercher onToggleCourse -->
     <app-course-tile
       [course]="course"
       (onToggleCourse)="onCourseToggle($event)"

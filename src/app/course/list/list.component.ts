@@ -56,6 +56,17 @@ export class ListComponent implements OnInit {
         });
     }
   }
+
+  public addCourse(object: any) {
+    this.router.navigate(['course/add']);
+    // const dialogRef = this._matDialog.open(CourseFormComponent, {
+    //   width: '250px',
+    //   data: {},
+    // });
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   console.log('The dialog was closed');
+    // });
+  }
 }
 
 // Fait pour le TP en haut correction avec les différents lien de différents fichiers.
@@ -71,9 +82,7 @@ export class ListComponent implements OnInit {
   ) {}
   public courses: Array<CourseType> = [];
   public course: Array<CourseListType> = [];
-
   modules: ModuleType[] = [];
-
   ngOnInit(): void {
     this._courseService
       .findAll() // findAll -> charge toute les données, findSimpleEtudiant refère a la fonction défini en back, et prend que ce qu'on a besoin
@@ -87,13 +96,11 @@ export class ListComponent implements OnInit {
       });
     console.log('c');
   }
-
 public onClick(object: any): void {
     // if (object.title)
     console.log(`previous`);
     this.router.navigate(['/dashboard']);
   }
-
   public cli(object: any): void {
     const selectedCourse = this.courses.find(
       (course) => course.title === 'Dicta eos beatae'

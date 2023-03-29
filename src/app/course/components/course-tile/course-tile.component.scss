@@ -73,3 +73,17 @@
     transform: rotate(90deg);
   }
 }
+button.mat-icon-button {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+}
+
+button.mat-icon-button mat-icon {
+  align-items: center;
+  display: block;
+  font-size: 16px;
+}
