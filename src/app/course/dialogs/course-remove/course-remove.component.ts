@@ -15,6 +15,7 @@ import { CourseType } from '../../types/course-type';
   styleUrls: ['./course-remove.component.scss'],
 })
 export class CourseRemoveComponent implements OnInit {
+  public okButtonLabel: string = 'Confirm';
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: CourseType,
     private router: Router,
@@ -24,9 +25,15 @@ export class CourseRemoveComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.data);
   }
-  public onClick() {
+  public onClick(): void {
     this.dialogRef.close();
     console.log('c est clique');
     // this.router.navigate(['/course/list']);
+  }
+
+  public onDelete(): void {
+    this.dialogRef.close(CourseRemoveComponent);
+    console.log('You want delete course :');
+    this.router.navigate(['/course/list']);
   }
 }
