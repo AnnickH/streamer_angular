@@ -1,8 +1,11 @@
 <div *ngFor="let module of modules" class="course">
   <ul class="module-list">
     <li style="display: flex">
-      <div style="width: 75%">{{ module.name }}</div>
+      <div style="width: 75%">
+        {{ module.name }}
+      </div>
       <div>{{ module.medias.length }} medias</div>
+
       <span
         [ngClass]="{
           'icon-list': true,
@@ -10,9 +13,12 @@
           down: module.isSelected
         }"
         (click)="reveal(module)"
-        style="margin-left: 10px"
+        style="margin-left: 0.5em"
         >&gt;</span
       >
+      <div style="margin-left: 1em">
+        {{ getMediaTime(module.medias) }}
+      </div>
     </li>
     <p class="li">
       <app-media

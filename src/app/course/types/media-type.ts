@@ -5,7 +5,7 @@ export type MediaType = {
   id: number;
   title: string;
   summary: string;
-  duration: string;
+  duration: number;
   createdAt: string;
   url: string;
   modules: Array<ModuleType>;

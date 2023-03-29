@@ -9,6 +9,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 import { environment } from './../../../environments/environment';
 import { CourseListType } from '../types/course-list-type';
+import { take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -25,5 +26,11 @@ export class CourseService {
    */
   public findAll(): Observable<CourseListType[]> {
     return this._httpClient.get<CourseListType[]>(this.endpoint);
+  }
+
+  public add(course: CourseModel): Observable<any> {
+    return this._httpClient
+      .post<CourseModel>(this.endpoint, course)
+      .pipe(take(1)); // ?? aligne les element 1 a 1 et take en prend que 1
   }
 }
