@@ -36,8 +36,12 @@ export class CourseTileComponent implements OnInit {
       data: course,
     });
     dialogRef.afterClosed().subscribe((result) => {
-      // if()
-      console.log('The dialog was closed');
+      if (result === 'confirm') {
+        console.log('Delete');
+      }
+      if (result === 'cancel') {
+        console.log('The dialog was closed');
+      }
     });
     console.log(`cc remove`);
   }
