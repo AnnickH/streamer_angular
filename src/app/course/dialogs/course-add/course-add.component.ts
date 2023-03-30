@@ -6,9 +6,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CourseModel } from '../../models/course-model';
+import { CourseService } from '../../services/course.service';
+import { CourseType } from '../../types/course-type';
 import { CourseFormComponent } from '../course-form/course-form.component';
 
 @Component({
@@ -20,7 +23,13 @@ export class CourseAddComponent implements OnInit {
   public okButtonLabel: string = 'CREATE';
   public form: FormGroup = new FormGroup({});
   private _course: CourseModel = new CourseModel();
-  constructor(private _formBuilder: FormBuilder, private _router: Router) {
+
+  constructor(
+    private _formBuilder: FormBuilder,
+    private _router: Router,
+    private _service: CourseService,
+    private _snackBar: MatSnackBar
+  ) {
     this._buildForm();
   }
 
@@ -29,6 +38,11 @@ export class CourseAddComponent implements OnInit {
   public onSubmit() {
     this._course.title = this.c['title'].value;
     this._course.objective = this.c['objective'].value;
+    this._service.add(this.form.value).subscribe({
+      next: (response: CourseType) => {
+        this._snackBar.open('Course was created', 'ok');
+      },
+    });
     alert(
       'Le course : ' +
         this._course.title +
