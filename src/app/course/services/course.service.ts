@@ -47,4 +47,8 @@ export class CourseService {
       observe: 'response',
     });
   }
+
+  /* public remove(id: number): Observable<HttpResponse<any>> {
+    return this._httpClient.delete<CourseListType>(`${this.endpoint}`);
+  } */
 }
