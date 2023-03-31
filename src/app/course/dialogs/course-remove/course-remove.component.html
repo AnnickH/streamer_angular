@@ -11,8 +11,9 @@
   >
     Cancel
   </button>
-  <button mat-button [mat-dialog-close]="closeMessage" (click)="onDelete()">
-    <!-- style="color: red; margin: 1em"-->
+  <button mat-button [mat-dialog-close]="closeMessage">
+    <!-- style="color: red; margin: 1em", rajouter (click)="onDelete()" si on veut que ce soit Remove qui gere
+    -->
     confirm
   </button>
 </div>
