@@ -18,6 +18,8 @@ export class CourseTileComponent implements OnInit {
   public tileInfo: any;
   @Output() public onToggleCourse: EventEmitter<CourseListType> =
     new EventEmitter();
+  @Output() public onRemoveCourse: EventEmitter<CourseListType> =
+    new EventEmitter();
   constructor(private _matDialog: MatDialog, private _router: Router) {}
 
   ngOnInit(): void {}
@@ -28,22 +30,31 @@ export class CourseTileComponent implements OnInit {
     this.onToggleCourse.emit(course);
   }
 
-  public remove(course: CourseListType) {
-    console.log(course);
-    const dialogRef = this._matDialog.open(CourseRemoveComponent, {
-      width: 'flex',
-      height: 'flex',
-      data: course,
-    });
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result === 'confirm') {
-        console.log('Delete');
-      }
-      if (result === 'cancel') {
-        console.log('The dialog was closed');
-      }
-    });
-    console.log(`cc remove`);
+  public remove(course: CourseListType): void {
+    /* const dialogRef =  */
+    this._matDialog
+      .open(CourseRemoveComponent, {
+        width: 'flex',
+        height: 'flex',
+        data: course,
+      })
+      .afterClosed()
+      .subscribe((result) => {
+        if (result !== undefined) {
+          console.log(`Remove ${course.title}`);
+          this.onRemoveCourse.emit(this.course);
+        }
+        // if (result === undefined) {
+        //   console.log(`cc`);
+        // }
+
+        // if (result === 'confirm') {
+        //   console.log('Delete');
+        // }
+        // if (result === 'cancel') {
+        //   console.log('The dialog was closed');
+        // }
+      });
   }
 
   public update() {
