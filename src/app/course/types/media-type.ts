@@ -6,9 +6,10 @@ export type MediaType = {
   title: string;
   summary: string;
   duration: number;
+  //totalTime: String;
   createdAt: string;
   url: string;
-  modules: Array<ModuleType>;
+  modules: Array<ModuleType>; // pas besoin
   typemedia: Typemedia;
   isSelected: boolean;
 };

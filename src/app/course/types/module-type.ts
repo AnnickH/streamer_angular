@@ -5,5 +5,6 @@ export interface ModuleType {
   name: string;
   objective: string;
   isSelected: boolean; // add isSelected
+  //totalTime: String;
   medias: Array<MediaType>;
 }
