@@ -36,4 +36,6 @@ export class CourseRemoveComponent implements OnInit {
     console.log('You want delete course : ' + this.data.title);
     // this.router.navigate(['/course/list']);
   }
+
+  public closeMessage: any = { doRemove: true };
 }
