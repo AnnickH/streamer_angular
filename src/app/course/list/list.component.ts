@@ -52,6 +52,9 @@ export class ListComponent implements OnInit {
         .forEach((inCourse: CourseListType) => {
           if (course.id !== inCourse.id) {
             inCourse.isSelected = false;
+            inCourse.modules.forEach(
+              (module: ModuleType) => (module.isSelected = false)
+            );
           }
         });
     }
@@ -66,6 +69,11 @@ export class ListComponent implements OnInit {
     // dialogRef.afterClosed().subscribe((result) => {
     //   console.log('The dialog was closed');
     // });
+  }
+
+  doRemoveCourse(course: CourseListType): void {
+    this.courses.splice(this.courses.indexOf(course), 1);
+    console.log('cc');
   }
 }
 
