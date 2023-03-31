@@ -1,9 +1,9 @@
 <h1>Are you sure you want to remove {{ data.title }} ?</h1>
-<div>
+<div mat-dialog-content>
   After confirm, this course will not be available any more and all concerned
   modules will be removed too.
 </div>
-<div class="right-aligned-button">
+<div class="right-aligned-button" mat-dialog-actions>
   <button
     mat-button
     (click)="onClick()"
@@ -11,7 +11,8 @@
   >
     Cancel
   </button>
-  <button mat-button (click)="onDelete()" style="color: red; margin: 1em">
+  <button mat-button (click)="onDelete()">
+    <!-- style="color: red; margin: 1em"-->
     confirm
   </button>
 </div>

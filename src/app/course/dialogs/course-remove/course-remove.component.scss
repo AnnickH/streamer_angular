@@ -2,3 +2,13 @@
 //   display: flex;
 //   justify-content: flex-end;
 // }
+div {
+  &.mat-dialog-actions {
+    button {
+      text-transform: uppercase;
+      &:nth-child(2) {
+        color: red;
+      }
+    }
+  }
+}

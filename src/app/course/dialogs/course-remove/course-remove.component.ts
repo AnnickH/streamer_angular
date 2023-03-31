@@ -32,8 +32,8 @@ export class CourseRemoveComponent implements OnInit {
   }
 
   public onDelete(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(); //ferme le dialog et [mat-dialog-close]="data" permet de récupérer la donnée
     console.log('You want delete course : ' + this.data.title);
-    this.router.navigate(['/course/list']);
+    // this.router.navigate(['/course/list']);
   }
 }
