@@ -4,9 +4,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UiModule } from '../ui/ui.module';
+import { ToggleDirective } from './directives/toggle.directive';
 
 @NgModule({
-  declarations: [],
+  declarations: [ToggleDirective],
   imports: [CommonModule],
   exports: [
     CommonModule,
@@ -15,6 +16,7 @@ import { UiModule } from '../ui/ui.module';
     FormsModule,
     UiModule,
     ReactiveFormsModule,
+    ToggleDirective,
   ],
 })
 export class SharedModule {}
