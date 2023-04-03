@@ -17,6 +17,14 @@
         style="margin-left: 0.5em"
         >&gt;</span
       >
+      <div class="col xs1">
+        <toggle
+          [selectedStatus]="module!.isSelected"
+          [isExpandable]="module.medias!.length > 0"
+          (onToggle)="toggle($event, module)"
+        ></toggle>
+      </div>
+
       <div style="margin-left: 1em">
         {{ getMediaTime(module.medias) }}
       </div>

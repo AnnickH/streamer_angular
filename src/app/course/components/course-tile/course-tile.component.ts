@@ -26,6 +26,7 @@ export class CourseTileComponent implements OnInit {
   // add correction
   public toggle(courseStatus: boolean): void {
     this.course.isSelected = courseStatus;
+
     this.onToggleCourse.emit(this.course);
   }
 
