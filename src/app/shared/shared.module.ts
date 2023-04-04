@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UiModule } from '../ui/ui.module';
 import { ToggleDirective } from './directives/toggle.directive';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [ToggleDirective],
@@ -17,6 +18,7 @@ import { ToggleDirective } from './directives/toggle.directive';
     UiModule,
     ReactiveFormsModule,
     ToggleDirective,
+    MatIconModule,
   ],
 })
 export class SharedModule {}
