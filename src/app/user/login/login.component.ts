@@ -17,7 +17,6 @@ export class LoginComponent implements OnInit {
 
   constructor() {}
 
-  timeout: any;
   ngOnInit(): void {
     const loginControl: AbstractControl = new FormControl('', [
       Validators.required,
