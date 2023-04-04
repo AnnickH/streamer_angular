@@ -19,9 +19,9 @@
       >
       <div class="col xs1">
         <toggle
-          [selectedStatus]="module!.isSelected"
+          [selectedStatus]="module.isSelected"
           [isExpandable]="module.medias!.length > 0"
-          (onToggle)="toggle($event, module)"
+          (onToggle)="revealOrHide(module)"
         ></toggle>
       </div>
 
