@@ -22,3 +22,14 @@ h1 {
     rgb(195, 186, 228)
   );
 }
+
+a {
+  display: grid;
+  color: rgb(195, 186, 228);
+}
+.row {
+  display: grid;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 1em;
+}

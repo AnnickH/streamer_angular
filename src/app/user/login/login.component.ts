@@ -5,6 +5,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,7 @@ export class LoginComponent implements OnInit {
   public form: FormGroup = new FormGroup({});
   public hide: Boolean = false;
 
-  constructor() {}
+  constructor(private _userService: UserService, private _router: Router) {}
 
   ngOnInit(): void {
     const loginControl: AbstractControl = new FormControl('', [
@@ -35,6 +37,16 @@ export class LoginComponent implements OnInit {
       console.log('cc');
 
       setTimeout(() => (this.hide = false), 2000);
+    }
+  }
+
+  onSubmit(): void {
+    if (this._userService.authenticate(this.form.value)) {
+      this._router.navigate(['/']);
+    } else {
+      this.form.controls['login'].setValue('');
+      this.form.controls['password'].setValue('');
+      // May be a toast, more user friendly ?
     }
   }
 }

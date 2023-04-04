@@ -1,7 +1,6 @@
-<p>login works!</p>
-<form class="row" [formGroup]="form">
+<form class="row" [formGroup]="form" (ngSubmit)="onSubmit()">
   <mat-form-field class="col xs12">
-    <input matInput placeholder="Your login..." />
+    <input matInput placeholder="Your login..." formControlName="login" />
     <mat-error
       *ngIf="form.controls['login'].touched && form.controls['login'].errors"
     >
@@ -15,10 +14,9 @@
         matInput
         [type]="hide ? 'text' : 'password'"
         placeholder="Your password..."
+        formControlName="password"
       />
-      <button mat-icon-button matSuffix (click)="revealOrHide()">
-        <mat-icon>remove_red_eye</mat-icon>
-      </button>
+
       <mat-error
         *ngIf="
           form.controls['password'].touched && form.controls['password'].errors
@@ -26,6 +24,10 @@
       >
         Password is required
       </mat-error>
+
+      <button mat-button (click)="revealOrHide()" [disabled]="hide">
+        <mat-icon>remove_red_eye</mat-icon>
+      </button>
     </div>
   </mat-form-field>
 
