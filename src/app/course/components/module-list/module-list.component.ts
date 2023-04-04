@@ -53,6 +53,20 @@ export class ModuleListComponent implements OnInit {
         });
     }
   }
+
+  revealOrHide(module: ModuleType): void {
+    module.isSelected = !module.isSelected;
+    if (module.isSelected) {
+      this.modules
+        .filter((inModule: ModuleType) => inModule.isSelected)
+        .forEach((inModule: ModuleType) => {
+          if (module.id !== inModule.id) {
+            inModule.isSelected = false;
+          }
+        });
+    }
+  }
+
   public toggle(moduleStatus: boolean, module: any): void {
     this.modules.forEach((mod) => {
       if (mod.id === module.id) {

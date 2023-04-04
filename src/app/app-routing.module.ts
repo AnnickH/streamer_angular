@@ -51,6 +51,11 @@ export class AppRoutingModule {
         import(`./course/course.module`).then((m) => m.CourseModule),
     },
     {
+      path: 'user',
+      loadChildren: () =>
+        import('./user/user.module').then((m) => m.UserModule),
+    },
+    {
       path: 'course/add',
       component: CourseAddComponent,
     },
