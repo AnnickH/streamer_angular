@@ -24,7 +24,6 @@ h1 {
 }
 
 a {
-  display: grid;
   color: rgb(195, 186, 228);
 }
 .row {
@@ -33,3 +32,10 @@ a {
   flex-wrap: wrap;
   margin-bottom: 1em;
 }
+// .l {
+//   background-repeat: no-repeat;
+//   display: inline-block;
+//   fill: currentColor;
+//   width: auto;
+//   height: auto;
+// }

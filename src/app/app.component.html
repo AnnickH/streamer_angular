@@ -6,11 +6,13 @@
     <!-- ancien header et div -->
     <mat-toolbar-row class="col xs12">
       <a [routerLink]="['/', 'user']">
-        <mat-icon class="col xs6">power_settings_new</mat-icon>
+        <mat-icon class="col xs6">input</mat-icon>
       </a>
+      <a [routerLink]="['/']"> </a>
     </mat-toolbar-row>
   </mat-toolbar>
 
+  <mat-icon class="l" (click)="stop()" svgIcon="sl"></mat-icon>
   <div class="row">
     <div class="col xs12">
       <router-outlet></router-outlet>

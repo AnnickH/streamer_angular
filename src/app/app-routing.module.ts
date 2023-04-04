@@ -7,6 +7,9 @@ import { AddComponent } from './student/add/add.component';
 import { UpdateComponent } from './student/update/update.component';
 import { MediaComponent } from './course/components/media/media.component';
 import { CourseAddComponent } from './course/dialogs/course-add/course-add.component';
+import { NoAuthGuard } from './user/guards/no-auth.guard';
+import { UserRoutingModule } from './user/user-routing.module';
+import { AuthGuard } from './user/guards/auth.guard';
 
 @NgModule({
   imports: [RouterModule.forRoot(AppRoutingModule.routes), SharedModule],
@@ -23,32 +26,38 @@ export class AppRoutingModule {
     {
       path: 'dashboard',
       component: DashboardComponent,
+      canActivate: [AuthGuard],
     },
 
     {
       path: 'student/list',
       component: ListComponent,
+      canActivate: [AuthGuard],
     },
 
     {
       path: 'student/add',
       component: AddComponent,
+      canActivate: [AuthGuard],
     },
 
     {
       path: 'media/list',
       component: MediaComponent,
+      canActivate: [AuthGuard],
     },
 
     {
       path: 'student/:id/update', // :id => sera remplacé par l'ID d'un Student à l'exécution
       component: UpdateComponent,
+      canActivate: [AuthGuard],
     },
 
     {
       path: 'course',
       loadChildren: () =>
         import(`./course/course.module`).then((m) => m.CourseModule),
+      canActivate: [AuthGuard],
     },
     {
       path: 'user',
@@ -58,6 +67,7 @@ export class AppRoutingModule {
     {
       path: 'course/add',
       component: CourseAddComponent,
+      canActivate: [AuthGuard],
     },
 
     {
