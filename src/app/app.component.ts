@@ -30,8 +30,10 @@ export class AppComponent {
   isLoggedIn = false;
 
   stop() {
-    this._route.navigate(['/', 'user']);
     sessionStorage.clear();
+
+    // this._route.navigate(['/', 'user']);
+    // window.location.reload();
 
     // add route
   }

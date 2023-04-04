@@ -32,10 +32,11 @@ a {
   flex-wrap: wrap;
   margin-bottom: 1em;
 }
-// .l {
-//   background-repeat: no-repeat;
-//   display: inline-block;
-//   fill: currentColor;
-//   width: auto;
-//   height: auto;
-// }
+.l {
+  height: 64px !important;
+  width: 64px !important;
+  svg {
+    // height: 64px !important;
+    // width: 64px !important;
+  }
+}
