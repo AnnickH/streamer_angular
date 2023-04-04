@@ -15,6 +15,10 @@ const users: Array<any> = [
 export class UserService {
   private _user: any = undefined;
   public get user(): any {
+    const jsonUser: string | null = sessionStorage.getItem('auth-key'); //on récupere ici la clé, si je n'en trouve pas je te return un null
+    if (jsonUser !== null) {
+      this._user = JSON.parse(jsonUser); //JSON.parse => converti la chaine de characters en un véritable object
+    }
     return this._user;
   }
 
@@ -26,6 +30,12 @@ export class UserService {
         user.login === credentials.login &&
         user.password === credentials.password
     );
+
+    //localStorage même coupe les informations coupée resterons
+    // sessionStorage dès que le navigateur est coupé les données disparaisent et devra se relog
+    if (this._user) {
+      sessionStorage.setItem('auth-key', JSON.stringify(credentials)); // peut stoquer que des chaines de characters
+    }
     return this._user !== undefined;
   }
 }
