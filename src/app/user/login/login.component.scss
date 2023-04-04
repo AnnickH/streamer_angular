@@ -1,0 +1,11 @@
+div {
+  &.password {
+    display: flex;
+  }
+}
+.row {
+  display: grid;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 1em;
+}
