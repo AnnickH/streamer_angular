@@ -24,6 +24,12 @@ export class CourseTileComponent implements OnInit {
 
   ngOnInit(): void {}
   // add correction
+  public toggle(courseStatus: boolean): void {
+    this.course.isSelected = courseStatus;
+
+    this.onToggleCourse.emit(this.course);
+  }
+
   public revealOrHide(course: CourseListType) {
     course.isSelected = !course.isSelected;
     console.log(`Course was toggled : ${course.isSelected}`);

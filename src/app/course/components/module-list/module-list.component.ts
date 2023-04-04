@@ -11,6 +11,7 @@ import { ModuleType } from '../../types/module-type';
 })
 export class ModuleListComponent implements OnInit {
   @Input() modules: ModuleType[] = [];
+
   @Output() public onToggleCourse: EventEmitter<ModuleType> =
     new EventEmitter();
   public timeModule: number = 0; // number = int
@@ -51,5 +52,19 @@ export class ModuleListComponent implements OnInit {
           }
         });
     }
+  }
+  public toggle(moduleStatus: boolean, module: any): void {
+    this.modules.forEach((mod) => {
+      if (mod.id === module.id) {
+        console.log(JSON.stringify(moduleStatus) + 'cc');
+        mod.isSelected = moduleStatus;
+      }
+    });
+
+    // this.modules.forEach((module) => {
+    //   module.isSelected = moduleStatus;
+    // });
+
+    // this.onToggleCourse.emit(this._module);
   }
 }
