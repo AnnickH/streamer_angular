@@ -21,9 +21,14 @@ export class ToggleDirective implements OnInit {
   private _nativeIcon: any;
   private _nativeIconContent: string = 'chevron_right';
   private _iconStatus: boolean = true;
+  private _selectedStatus: boolean = false;
 
-  // @Input() public element: any;
-  @Input() public selectedStatus: boolean = false;
+  @Input() public set selectedStatus(status: boolean) {
+    this._selectedStatus = status;
+    if (this.useIcon) {
+      this._nativeIcon.textContent = status ? 'expand_more' : 'chevron_right';
+    }
+  }
 
   @Input() public set isExpandable(status: boolean) {
     this._iconStatus = status;
