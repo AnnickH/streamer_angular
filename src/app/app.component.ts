@@ -22,8 +22,8 @@ export class AppComponent {
     //   )
     // );
     this._matIconRegistry.addSvgIcon(
-      'sl',
-      this._domSanitizer.bypassSecurityTrustResourceUrl('../assets/sl.svg')
+      'sleep',
+      this._domSanitizer.bypassSecurityTrustResourceUrl('../assets/sleep.svg')
     );
   }
   public title: string = 'streamer';
