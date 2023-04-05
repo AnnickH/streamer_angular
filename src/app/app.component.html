@@ -8,10 +8,13 @@
       <a [routerLink]="['/', 'user']">
         <mat-icon class="col xs6">input</mat-icon>
       </a>
-      <a [routerLink]="['/']"> </a>
+      <!-- <a [routerLink]="['/']"> </a> -->
+      <button mat-button class="l">
+        <mat-icon (click)="stop()" svgIcon="sleep"></mat-icon>
+      </button>
     </mat-toolbar-row>
   </mat-toolbar>
-  <mat-icon class="l" (click)="stop()" svgIcon="sleep"></mat-icon>
+
   <div class="row">
     <div class="col xs12">
       <router-outlet></router-outlet>

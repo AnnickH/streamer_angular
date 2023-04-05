@@ -33,7 +33,7 @@ export class AppComponent {
     sessionStorage.clear();
 
     // this._route.navigate(['/', 'user']);
-    // window.location.reload();
+    window.location.reload();
 
     // add route
   }
